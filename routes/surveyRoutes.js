@@ -13,9 +13,9 @@ const Survey = mongoose.model('surveys');
 //theory 10 - 125,126
 module.exports = app => {
 
-    //section 13 - 188
+    //section 13 - 188 ~ 189
     app.get('/api/surveys',requireLogin,async (req,res)=>{
-       const surveys= await Survey.find({_user:req.user.id});
+       const surveys= await Survey.find({_user:req.user.id}).select({recipients:false});
        res.send(surveys);
     });
 
